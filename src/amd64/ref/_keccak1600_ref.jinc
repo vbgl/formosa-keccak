@@ -12,6 +12,7 @@ inline fn __state_init_ref
   reg u64 z64;
   z64 = 0;
   i = 0;
+  #[bounded]
   while (i < 25) {
     st[i] = z64;
     i += 1; 
