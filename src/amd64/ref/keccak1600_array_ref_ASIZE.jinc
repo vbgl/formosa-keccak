@@ -150,6 +150,7 @@ inline fn __dumpstate_array_ref
 { 
   reg u64 i, t;
   i = 0;
+  #[bounded]
   while (i <s (LEN/8)) {
     t = st[(int) i];
     buf.[u64 offset] = t;
