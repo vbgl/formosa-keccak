@@ -480,7 +480,7 @@ module M(P: MParam) = {
     if ((32 <= lEN)) {
       offset <- (offset + (W64.of_int dELTA));
       dELTA <- 0;
-      while ((at \ult (W64.of_int ((aT %/ 8) + (4 * (lEN %/ 32)))))) {
+      while ((at \ult (W64.of_int ((aT %/ 8) + (4 * (lEN %/ 32)) - 3)))) {
         t256 <-
         (get256_direct (WA.init8 (fun i => buf.[i]))
         (W64.to_uint offset));

@@ -212,7 +212,7 @@ inline fn __addstate_array_avx2x4
   DELTA = 0;
   // continue processing remaining bytes
   if (8 <= LEN) {
-    while ( at < 4*(AT/8)+16*(LEN/32) ) {
+    while ( at < 4*(AT/8)+16*(LEN/32) - 15) {
       t256_0 = buf0.[u256 offset];
       t256_1 = buf1.[u256 offset];
       t256_2 = buf2.[u256 offset];
@@ -229,7 +229,7 @@ inline fn __addstate_array_avx2x4
       st.[u256 8*at+96] = t256_3;
       at += 16;
     }
-    while ( at < 4*(AT/8)+4*(LEN/8)) {
+    while ( at < 4*(AT/8)+4*(LEN/8) - 3) {
       t0 = buf0.[u64 offset];
       t0 ^= st[u64 at + 0];
       st[u64 at + 0] = t0;

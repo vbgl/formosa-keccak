@@ -404,7 +404,7 @@ module M(P: MParam) = {
       
     }
     if ((8 <= lEN)) {
-      while ((at \ult (W64.of_int ((32 * (aT %/ 8)) + (32 * (lEN %/ 8)))))) {
+      while ((at \ult (W64.of_int ((32 * (aT %/ 8)) + (32 * (lEN %/ 8)) - 31)))) {
         t256 <-
         (VPBROADCAST_4u64
         (get64_direct (WA.init8 (fun i => buf.[i]))
@@ -683,7 +683,7 @@ module M(P: MParam) = {
     offset <- (offset + (W64.of_int dELTA));
     dELTA <- 0;
     if ((8 <= lEN)) {
-      while ((at \ult (W64.of_int ((4 * (aT %/ 8)) + (16 * (lEN %/ 32)))))) {
+      while ((at \ult (W64.of_int ((4 * (aT %/ 8)) + (16 * (lEN %/ 32)) - 15)))) {
         t256_0 <-
         (get256_direct (WA.init8 (fun i => buf0.[i]))
         (W64.to_uint offset));
@@ -737,7 +737,7 @@ module M(P: MParam) = {
         (W64.to_uint (((W64.of_int 8) * at) + (W64.of_int 96))) t256_3)));
         at <- (at + (W64.of_int 16));
       }
-      while ((at \ult (W64.of_int ((4 * (aT %/ 8)) + (4 * (lEN %/ 8)))))) {
+      while ((at \ult (W64.of_int ((4 * (aT %/ 8)) + (4 * (lEN %/ 8)) - 3)))) {
         t0 <-
         (get64_direct (WA.init8 (fun i => buf0.[i]))
         (W64.to_uint offset));
