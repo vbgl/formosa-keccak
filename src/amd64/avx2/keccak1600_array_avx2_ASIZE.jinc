@@ -150,7 +150,7 @@ inline fn __pstate_array_avx2
   if (32 <= LEN) {
     offset += DELTA;
     DELTA = 0;
-    while ( at < AT/8+4*(LEN/32)) {
+    while ( at < AT/8+4*(LEN/32) - 3) {
       t256 = buf.[u256 offset];
       offset += 32;
       pst.[u256 8*at] = t256;
