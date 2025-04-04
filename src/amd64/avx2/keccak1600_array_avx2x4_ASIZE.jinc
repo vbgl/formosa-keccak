@@ -353,7 +353,7 @@ inline fn __dumpstate_array_avx2x4
     buf3.[u256 offset] = x3;
     offset +=32;
   } // 0 32 (64) 
-  while (i <s 8*(LEN/8)) {
+  while (i <s 8*(LEN/8) - 7) {
     t0 = st.[u64 4*i+0*8];
     buf0.[u64 offset] = t0;
     t1 = st.[u64 4*i+1*8];

@@ -922,7 +922,7 @@ module M(P: MParam) = {
     var  _6:int;
     var  _7:int;
     i <- (W64.of_int 0);
-    while ((i \slt (W64.of_int (32 * (lEN %/ 32))))) {
+    while ((i \slt (W64.of_int (32 * (lEN %/ 32) - 31)))) {
       x0 <-
       (get256_direct (WArray800.init256 (fun i_0 => st.[i_0]))
       (W64.to_uint (((W64.of_int 4) * i) + (W64.of_int (0 * 32)))));
@@ -959,7 +959,7 @@ module M(P: MParam) = {
       (W64.to_uint offset) x3)));
       offset <- (offset + (W64.of_int 32));
     }
-    while ((i \slt (W64.of_int (8 * (lEN %/ 8))))) {
+    while ((i \slt (W64.of_int (8 * (lEN %/ 8) - 7)))) {
       t0 <-
       (get64_direct (WArray800.init256 (fun i_0 => st.[i_0]))
       (W64.to_uint (((W64.of_int 4) * i) + (W64.of_int (0 * 8)))));
