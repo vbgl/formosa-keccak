@@ -133,6 +133,7 @@ inline fn __keccakf1600_pround_avx2( reg u256[7] state ) -> reg u256[7] {
   return state;
 }
 
+#[Safety::contract]
 fn _keccakf1600_avx2(reg u256[7] state) -> reg u256[7]
 {
   reg u64 r;
