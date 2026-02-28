@@ -266,14 +266,18 @@ inline fn __a_ilen_read_bcast_upto8_at
       w256 = __SHLQ_256(w256, AT8);
       DELTA += 8-AT8;
       LEN -= 8-AT8;
-      AT = CUR + 8;
+      AT8 = 8;
     } else {
       AT8 = AT-CUR;
       DELTA, LEN, TRAIL, AT, w = __a_ilen_read_upto8_at(buf, offset, DELTA, LEN, TRAIL, CUR, AT);
       t128 = (128u) w;
       w256 = #VPBROADCAST_4u64(t128);
       w256 = __SHLQ_256(w256, AT8);
+      DELTA += 8-AT8;
+      LEN -= 8-AT8;
+      AT8 = 8;
     }
+    AT = CUR + AT8;
   }
   return DELTA, LEN, TRAIL, AT, w256; 
 }

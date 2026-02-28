@@ -2854,7 +2854,7 @@ module M = {
         w256 <@ __SHLQ_256 (w256, aT8);
         dELTA <- (dELTA + (8 - aT8));
         lEN <- (lEN - (8 - aT8));
-        aT <- (cUR + 8);
+        aT8 <- 8;
       } else {
         aT8 <- (aT - cUR);
         (dELTA, lEN, tRAIL, aT, w) <@ __a_ilen_read_upto8_at (buf, offset,
@@ -2862,7 +2862,11 @@ module M = {
         t128 <- (zeroextu128 w);
         w256 <- (VPBROADCAST_4u64 (truncateu64 t128));
         w256 <@ __SHLQ_256 (w256, aT8);
+        dELTA <- (dELTA + (8 - aT8));
+        lEN <- (lEN - (8 - aT8));
+        aT8 <- 8;
       }
+      aT <- (cUR + aT8);
     }
     return (dELTA, lEN, tRAIL, aT, w256);
   }
