@@ -143,8 +143,7 @@ module MM = {
       aT8 <- (aT - cUR);
       if ((8 <= lEN)) {
         w <-
-        (get64_direct (WA.init8 (fun i => buf.[i]))
-        (W64.to_uint ((W64.of_int offset) + (W64.of_int dELTA))));
+        (get64_direct (WA.init8 (fun i => buf.[i])) (offset + dELTA));
         w <@ M.__SHLQ (w, aT8);
         dELTA <- (dELTA + (8 - aT8));
         lEN <- (lEN - (8 - aT8));
@@ -153,8 +152,7 @@ module MM = {
         if ((4 <= lEN)) {
           w <-
           (zeroextu64
-          (get32_direct (WA.init8 (fun i => buf.[i]))
-          (W64.to_uint ((W64.of_int offset) + (W64.of_int dELTA)))));
+          (get32_direct (WA.init8 (fun i => buf.[i])) (offset + dELTA)));
           w <@ M.__SHLQ (w, aT8);
           dELTA <- (dELTA + ((8 <= (4 + aT8)) ? (8 - aT8) : 4));
           lEN <- (lEN - ((8 <= (4 + aT8)) ? (8 - aT8) : 4));
@@ -165,8 +163,7 @@ module MM = {
         if (((aT8 < 8) /\ (2 <= lEN))) {
           t16 <-
           (zeroextu64
-          (get16_direct (WA.init8 (fun i => buf.[i]))
-          (W64.to_uint ((W64.of_int offset) + (W64.of_int dELTA)))));
+          (get16_direct (WA.init8 (fun i => buf.[i])) (offset + dELTA)));
           dELTA <- (dELTA + ((8 <= (2 + aT8)) ? (8 - aT8) : 2));
           lEN <- (lEN - ((8 <= (2 + aT8)) ? (8 - aT8) : 2));
           t16 <@ M.__SHLQ (t16, aT8);
@@ -179,8 +176,7 @@ module MM = {
           if ((1 <= lEN)) {
             t8 <-
             (zeroextu64
-            (get8_direct (WA.init8 (fun i => buf.[i]))
-            (W64.to_uint ((W64.of_int offset) + (W64.of_int dELTA)))));
+            (get8_direct (WA.init8 (fun i => buf.[i])) (offset + dELTA)));
             t8 <- (t8 `|` (W64.of_int (256 * (tRAIL %% 256))));
             dELTA <- (dELTA + 1);
             lEN <- (lEN - 1);
@@ -225,8 +221,7 @@ module MM = {
       aT16 <- (aT - cUR);
       if ((16 <= lEN)) {
         w <-
-        (get128_direct (WA.init8 (fun i => buf.[i]))
-        (W64.to_uint ((W64.of_int offset) + (W64.of_int dELTA))));
+        (get128_direct (WA.init8 (fun i => buf.[i])) (offset + dELTA));
         w <@ M.__SHLDQ (w, aT16);
         dELTA <- (dELTA + (16 - aT16));
         lEN <- (lEN - (16 - aT16));
